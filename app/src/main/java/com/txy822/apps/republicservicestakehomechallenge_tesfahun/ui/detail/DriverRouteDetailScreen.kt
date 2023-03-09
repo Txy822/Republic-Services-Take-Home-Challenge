@@ -1,6 +1,5 @@
 package com.txy822.apps.republicservicestakehomechallenge_tesfahun.ui.detail
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -12,7 +11,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -21,8 +19,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.txy822.apps.republicservicestakehomechallenge_tesfahun.model.data.local.RouteDetailEntity
-import com.txy822.apps.republicservicestakehomechallenge_tesfahun.ui.main.DriverRouteViewModel
 
 
 @Composable
@@ -61,6 +57,8 @@ fun DriverRouteDetailScreen(
                         )
                     }
                 }
+                Spacer(modifier = Modifier.height(20.dp))
+
                 Row(Modifier.padding(horizontal = 8.dp)) {
                     Box(
                         Modifier
@@ -68,13 +66,11 @@ fun DriverRouteDetailScreen(
                     ) {
                         Column {
                             Text(
-                                text = routesSate.type,
-                                fontSize = 16.sp,
-                                color = Color.Gray
+                                text = "Type: "+routesSate.type,
+                                fontSize = 20.sp,
+                                color = Color.Black
                             )
                             Spacer(modifier = Modifier.height(20.dp))
-                            // Divider(color = Color.LightGray, thickness = 1.dp, modifier = Modifier.padding(vertical = 10.dp))
-                            Text(text =routesSate.id.toString() )
                         }
                     }
                 }

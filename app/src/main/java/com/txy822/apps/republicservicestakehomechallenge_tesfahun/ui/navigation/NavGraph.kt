@@ -18,17 +18,6 @@ fun NavGraph(
         composable(route = Screen.Home.route) {
             DriverRouteMainScreen(navController = navController)
         }
-//        composable(route= Screen.Detail.route){
-//            val result = navController.previousBackStackEntry?.savedStateHandle?.get<RouteDetailEntity>("catFact")
-//            DriverRouteDetailScreen(catFactModel = result, navController = navController)
-//        }
-//
-//        composable("${Screen.Detail.route}/{id}"){backStackEntry ->
-//            val id = backStackEntry.arguments?.getInt("id")
-//            DriverRouteDetailScreen( id = id,  navController=navController)
-//        }
-
-
         composable("${Screen.Detail.route}/{id}",
             arguments = listOf(navArgument("id"){type= NavType.IntType})
         ) {

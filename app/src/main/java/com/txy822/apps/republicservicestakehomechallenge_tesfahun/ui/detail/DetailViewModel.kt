@@ -1,7 +1,5 @@
 package com.txy822.apps.republicservicestakehomechallenge_tesfahun.ui.detail
 
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

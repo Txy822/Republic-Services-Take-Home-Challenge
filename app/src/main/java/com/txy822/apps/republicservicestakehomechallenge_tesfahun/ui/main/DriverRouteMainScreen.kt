@@ -82,19 +82,6 @@ fun DriverRouteMainScreen(
                                 )
                             }
                         }
-                        Row(Modifier.padding(top = 10.dp, start = 8.dp)) {
-                            Box(
-                                Modifier
-                                    .fillMaxWidth()
-                            ) {
-                                Text(
-                                    text = driverState.id,
-                                    fontSize = 24.sp,
-                                    fontStyle = FontStyle.Normal,
-                                    fontWeight = FontWeight.W400
-                                )
-                            }
-                        }
                     }
                 }
                 Divider(
@@ -114,7 +101,7 @@ fun TopAppBarContent(viewModel: DriverRouteViewModel) {
     TopAppBar(
         title = {
             Text(
-                text = " Drivers Details",
+                text = " Drivers  Name List",
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
                 textAlign = TextAlign.Center,

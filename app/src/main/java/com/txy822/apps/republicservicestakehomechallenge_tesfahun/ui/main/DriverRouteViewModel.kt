@@ -24,10 +24,6 @@ class DriverRouteViewModel @Inject constructor(
     private val _driversListState = MutableStateFlow(emptyList<DriverDetailEntity>())
     val driversListState: StateFlow<List<DriverDetailEntity>> = _driversListState.asStateFlow()
 
-//    private val _routesListState = MutableStateFlow(emptyList<RouteDetailEntity>())
-//    val routesListState: StateFlow<List<RouteDetailEntity>> = _routesListState.asStateFlow()
-
-
     private val _loadingState = MutableStateFlow(false)
     val loadingState: StateFlow<Boolean> = _loadingState.asStateFlow()
 
@@ -65,26 +61,6 @@ class DriverRouteViewModel @Inject constructor(
                         }
                     }
                 }
-        }
-    }
-
-    fun sortDriversDetailByName() {
-        viewModelScope.launch(Dispatchers.IO) { //was Dispatchers.main
-
-            when (val result = repo.getDriversDetails2()) {
-                is Resource.Success -> {
-                    result.data?.let { listings ->
-                        val sortedValue = listings.sortedBy { it.name }
-                        _driversListState.update { sortedValue }
-                    }
-                }
-                is Resource.Error -> {
-                    _errorState.update { "Error Occurred" }
-                }
-                is Resource.Loading -> {
-                    _loadingState.update { true }
-                }
-            }
         }
     }
 }

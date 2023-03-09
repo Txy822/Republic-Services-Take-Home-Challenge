@@ -17,12 +17,4 @@ interface DriverDao {
     @Query("SELECT * FROM driver_detail_table")
     suspend fun getAllDriversFromDb(): List< DriverDetailEntity>
 
-    @Query(
-        """
-            SELECT * 
-            FROM driver_detail_table
-            WHERE UPPER(:query) == name
-        """
-    )
-    suspend fun searchDriverDetail(query: String): DriverDetailEntity
 }

@@ -1,6 +1,5 @@
 package com.txy822.apps.republicservicestakehomechallenge_tesfahun.model.repository
 
-import android.util.Log
 import com.txy822.apps.republicservicestakehomechallenge_tesfahun.model.data.local.*
 import com.txy822.apps.republicservicestakehomechallenge_tesfahun.model.data.remote.apiservice.DriverRouteApi
 import com.txy822.apps.republicservicestakehomechallenge_tesfahun.model.data.remote.dto.DriverRouteDto
@@ -35,19 +34,11 @@ class DriverRouteRepositoryImpl @Inject constructor(
                 null // flow{null}
             }
             remoteListings?.let { listings ->
-                //clearCatFactsFromDb()
                 insertDriversDetails(listings.drivers.map { it.toDriverDetailEntity()})
                 insertRoutesDetails(listings.routes.map { it.toRoutesDetailEntity()})
 
-//                val result = getRouteDetail(1)
-//                Log.i("Tag", result.name + result.type)
-//                println(" Result test ${result.name}")
-
                 val drivers = getDriversDetails().map { it.toDriversDto() }
                 val routes = getRoutesDetails().map { it.toRouteDto() }
-                println("drivers list size : ${drivers.size}")
-
-                println("routes  list size : ${routes.size}")
 
                 emit(Resource.Success(
                     data =  DriverRouteDto(drivers = drivers, routes = routes)
@@ -57,9 +48,6 @@ class DriverRouteRepositoryImpl @Inject constructor(
             if (remoteListings == null) {
                 val drivers = getDriversDetails().map { it.toDriversDto() }
                 val routes = getRoutesDetails().map { it.toRouteDto() }
-                println("drivers list size : ${drivers.size}")
-
-                println("routes  list size : ${routes.size}")
 
                 emit(Resource.Success(
                     data =  DriverRouteDto(drivers = drivers, routes = routes)
@@ -76,11 +64,6 @@ class DriverRouteRepositoryImpl @Inject constructor(
         routesDao.insertRoutesList(routes)
     }
 
-    override suspend fun getDriverDetailByName(name: String): DriverDetailEntity {
-
-       return  driverDao.searchDriverDetail(name)
-    }
-
     override suspend fun getDriversDetails(): List<DriverDetailEntity> {
        return  driverDao.getAllDriversFromDb()
     }
@@ -88,11 +71,6 @@ class DriverRouteRepositoryImpl @Inject constructor(
         return  routesDao.getAllRoutesFromDb()
     }
 
-//    override suspend fun getRouteDetail(id: Int): RouteDetailEntity {
-//
-//        return  routesDao.routeById(id)
-//
-//    }
     override suspend fun getDriversDetails2(): Resource<List<DriverDetailEntity>> {
         return try {
             val result = driverDao.getAllDriversFromDb()

@@ -13,11 +13,7 @@ interface DriverRouteRepository {
 
     suspend fun insertRoutesDetails(routes: List<RouteDetailEntity>)
 
-    suspend fun getDriverDetailByName(name: String): DriverDetailEntity
-
     suspend fun  getDriversDetails(): List<DriverDetailEntity>
-
-//    suspend fun getRouteDetail(id: Int) : RouteDetailEntity
 
     suspend fun deleteRoutes()
 
