@@ -46,11 +46,10 @@ class DetailViewModel @Inject constructor(
                             _routesListState.update { repo.getRoutesDetails().sortedBy { it.type }.first{it.type=="R"}}
                         }
                         if(id%5 ==0){
-                            _routesListState.update { repo.getRoutesDetails().sortedBy { it.type }.last { it.type=="C" } }
+                            _routesListState.update { repo.getRoutesDetails().sortedBy { it.type }.filter { it.type=="C"}[1] }
                         }
                         else {
                             _routesListState.update { repo.getRoutesDetails().sortedBy { it.type }.last{it.type=="I"}}
-
                         }
                     }
                 }

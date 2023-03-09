@@ -45,9 +45,6 @@ fun DriverRouteMainScreen(
     val isLoading by viewModel.loadingState.collectAsState()
     val error by viewModel.errorState.collectAsState()
 
-//    LaunchedEffect(key1 = viewModel, block = {
-//        viewModel.updateDriverRoutes()
-//    })
     Column(modifier = Modifier.padding(20.dp)) {
         TopAppBarContent(viewModel = viewModel)
         Spacer(modifier = Modifier.height(20.dp))

@@ -21,7 +21,6 @@ class DriverRouteRepositoryImpl @Inject constructor(
     private val routesDao = db.routeDetailDao()
     override suspend fun getDriverRouteDetails(): Flow<Resource<DriverRouteDto>> {
         return flow {
-
             val remoteListings = try {
                 api.getDriverRoutes()
             } catch (e: IOException) {

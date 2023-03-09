@@ -42,14 +42,14 @@ class DriverRouteViewModel @Inject constructor(
                 .collect { result ->
                     when (result) {
                         is Resource.Success -> {
-                            result.data?.let { listings ->
+                            result.data?.let { data ->
                                 if(sorted){
-                                    val sortedValue = listings.drivers.sortedBy { it.name }
+                                    val sortedData =data.drivers.sortedBy { it.name.split(" ")[1] }
 
-                                    _driversListState.update { sortedValue.map { it.toDriverDetailEntity() } }
+                                    _driversListState.update { sortedData.map { it.toDriverDetailEntity() } }
                                 }
                                 else {
-                                    _driversListState.update { listings.drivers.map { it.toDriverDetailEntity() } }
+                                    _driversListState.update { data.drivers.map { it.toDriverDetailEntity() } }
                                 }
                             }
                         }
